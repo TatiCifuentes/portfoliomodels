@@ -270,10 +270,10 @@ def performance(retornos,wpo):
 def medidas(retornos,rindice,wpo):
   rph = retornos @ wpo
   rp = rph.mean().item()
-  sigmap = rph.std()
+  sigmap = rph.std().item()
   sharpep = rp/sigmap
   semirph = np.minimum(rph,0)
-  sortinop = rp/semirph.std()
+  sortinop = rp/semirph.std().item()
   modelo = sm.OLS(rph,sm.add_constant(rindice)).fit()
   betap = modelo.params[1].item()
   treynorp = rp/betap
