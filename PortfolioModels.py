@@ -267,3 +267,17 @@ def performance(retornos,wpo):
         valorpo[i] = valorpo[i-1] * np.exp(rhpo.iloc[i-1])
     return valorpo
 
+def medidas(retornos,rindice,wpo):
+  rph = retornos @ wpo
+  rp = rph.mean().item()
+  sigmap = rph.std()
+  sharpep = rp/sigmap
+  semirph = np.minimum(rph,0)
+  sortinop = rp/semirph.std()
+  modelo = sm.OLS(rph,sm.add_constant(rindice)).fit()
+  betap = modelo.params[1].item()
+  treynorp = rp/betap
+  omegap = np.maximum(rph,0).sum()/-np.minimum(rph,0).sum()
+  medidas = {'Retorno': rp, 'Volatilidad':sigmap, 'Sharpe': sharpep, 'Beta':betap,'Treynor':treynorp,'Sortino': sortinop,
+             'Omega': omegap.item()}
+  return medidas
