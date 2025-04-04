@@ -273,7 +273,7 @@ def medidas(retornos,rindice,wpo):
   sigmap = rph.std()
   sharpep = rp/sigmap
   semirph = np.minimum(rph,0)
-  sortinop = rp/semirph.std().item()
+  sortinop = rp/semirph.std()
   modelo = sm.OLS(rph,sm.add_constant(rindice)).fit()
   betap = modelo.params[1].item()
   treynorp = rp/betap
