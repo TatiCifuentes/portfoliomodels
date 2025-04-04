@@ -270,7 +270,7 @@ def performance(retornos,wpo):
 def medidas(retornos,rindice,wpo):
   rph = retornos @ wpo
   rp = rph.mean().item()
-  sigmap = rph.std().item()
+  sigmap = rph.std()
   sharpep = rp/sigmap
   semirph = np.minimum(rph,0)
   sortinop = rp/semirph.std().item()
