@@ -278,6 +278,9 @@ def medidas(retornos,rindice,wpo):
   betap = modelo.params[1].item()
   treynorp = rp/betap
   omegap = np.maximum(rph,0).sum()/-np.minimum(rph,0).sum()
+  varp = np.percentile(rph,5)
+  cvarp = rph[rph < varp].mean().item()
+
   medidas = {'Retorno': rp, 'Volatilidad':sigmap, 'Sharpe': sharpep, 'Beta':betap,'Treynor':treynorp,'Sortino': sortinop,
-             'Omega': omegap.item()}
+             'Omega': omegap.item(), 'CVaR 95%': cvarp }
   return medidas
