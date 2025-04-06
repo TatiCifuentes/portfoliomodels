@@ -280,7 +280,7 @@ def medidas(retornos,rindice,wpo):
   omegap = np.maximum(rph,0).sum()/-np.minimum(rph,0).sum()
   varp = np.percentile(rph,5)
   cvarp = rph[rph < varp].mean().item()
-  ra=(rhp.mean()-rindice.mean()).round(6) 
+  ra=(rph.mean()-rindice.mean()).round(6) 
   tracking_errror=(rph.values-rindice.iloc[:,0].values).std()
 
   medidas = {'Retorno': rp, 'Volatilidad':sigmap, 'Sharpe': sharpep, 'Beta':betap,'Treynor':treynorp,'Sortino': sortinop,
