@@ -281,7 +281,7 @@ def medidas(retornos,rindice,wpo):
   varp = np.percentile(rph,5)
   cvarp = rph[rph < varp].mean().item()
   ra=(rhp.mean()-rindice.mean()).round(6) 
-  tracking_errror=(rhp.values-rindice.iloc[:,0].values).std()
+  tracking_errror=(rph.values-rindice.iloc[:,0].values).std()
 
   medidas = {'Retorno': rp, 'Volatilidad':sigmap, 'Sharpe': sharpep, 'Beta':betap,'Treynor':treynorp,'Sortino': sortinop,
              'Omega': omegap.item(), 'CVaR 95%': cvarp, 'Tracking Error': tracking_error }
