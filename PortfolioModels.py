@@ -296,7 +296,7 @@ def medidas(retornos,rindice,wpo):
 
       ra = (rph - rindice.iloc[:,0]).mean().item()
 
-      information_ratio = ra/te
+      information_ratio = ra/tracking_error
   medidas = {'Retorno': rp, 'Volatilidad':sigmap, 'Sharpe': sharpep, 'Beta':betap,'Treynor':treynorp,'Sortino': sortinop,
              'Omega': omegap.item(), 'CVaR 95%': cvarp, 'Tracking Error': tracking_error, 'Information Ratio': information_ratio }
   return medidas
